@@ -42,10 +42,13 @@ mkdir client-build
 cd client-build
 
 echo -e "\033[1;32m Running cmake \033[0m"
-cmake ..  -DCMAKE_PREFIX_PATH=../../qt5.11.1/5.11.1/clang_64 -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_BUILD_TYPE=Debug -DNO_SHIBBOLETH=1 -DQTKEYCHAIN_LIBRARY=/usr/local/opt/qtkeychain/lib/libqt5keychain.dylib -DQTKEYCHAIN_INCLUDE_DIR=/usr/local/opt/qtkeychain/include/qt5keychain -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 -DOPENSSL_INCLUDE_DIR=/usr/local/opt/openssl@1.1/include -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib 
+cmake ..  -DCMAKE_PREFIX_PATH=/usr/local/opt/qt@5.11 -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_BUILD_TYPE=Debug -DNO_SHIBBOLETH=1 -DQTKEYCHAIN_LIBRARY=/usr/local/opt/qtkeychain/lib/libqt5keychain.dylib -DQTKEYCHAIN_INCLUDE_DIR=/usr/local/opt/qtkeychain/include/qt5keychain -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 -DOPENSSL_INCLUDE_DIR=/usr/local/opt/openssl@1.1/include -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib -DQt5WebEngineWidgets_DIR=../../qt5.11.1/5.11.1/clang_64/lib/cmake/Qt5WebEngineWidgets -DQt5WebEngine_DIR=../../qt5.11.1/5.11.1/clang_64/lib/cmake/Qt5WebEngine
 
 echo -e "\033[1;32m Running make \033[0m"
 make
+
+echo -e "\033[1;32m Running macdeployqt \033[0m"
+/usr/local/opt/qt@5.11/bin/macdeployqt bin/nextcloud.app
 
 echo -e "\033[1;32m Creating package \033[0m"
 admin/osx/create_mac.sh bin .

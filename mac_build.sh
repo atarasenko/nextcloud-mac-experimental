@@ -30,7 +30,7 @@ fi
 echo -e "\033[1;32m Installing dependencies \033[0m"
 brew tap owncloud/owncloud
 brew install $(brew deps owncloud-client)
-brew install qtkeychain openssl@1.1
+brew install cmake qtkeychain openssl@1.1
 
 echo -e "\033[1;32m Downloading source \033[0m"
 git clone git://github.com/nextcloud/client.git
